@@ -31,6 +31,13 @@ WEB
         "wms_onlineresource"  "http://localhost"
         "wms_srs"             "EPSG:4269 EPSG:4326"
          WMS_ENABLE_REQUEST "*" 
+
+      "wfs_title"          "ERML WFS service" ## REQUIRED
+      "wfs_onlineresource" "http://localhost?" ## Recommended
+      "wfs_srs"            "EPSG:4326 EPSG:4269 EPSG:3978 EPSG:3857" ## Recommended
+      "wfs_abstract"       "ERML 2.0 lite compliant service" ## Recommended
+      "wfs_enable_request" "*"  # necessary
+
       END
 END
 
@@ -47,6 +54,13 @@ end
 # https://mapserver.org/input/vector/sqlite.html
 LAYER 
     NAME "MineView"
+    METADATA
+        "wfs_title"         "Mines" ##REQUIRED
+        "wfs_srs"           "EPSG:4326" ## REQUIRED
+        "gml_include_items" "all" ## Optional (serves all attributes for layer)
+        "gml_featureid"     "identifier" ## REQUIRED
+        "wfs_enable_request" "*"
+      END
     TYPE POINT
     STATUS ON
     CONNECTIONTYPE OGR
