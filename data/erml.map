@@ -1,0 +1,67 @@
+MAP
+    # mapfile to expose WMS and WFS  for ERML
+
+NAME "EarthResourceML"
+STATUS ON
+SIZE 1000 1000
+EXTENT -145 44 -50 90
+UNITS DD
+TRANSPARENT OFF
+IMAGETYPE png24
+
+
+OUTPUTFORMAT
+    NAME png24
+    DRIVER "GD/PNG"
+    MIMETYPE "image/png"
+    IMAGEMODE RGB
+    EXTENSION "png"
+  END
+
+  #
+# Start of web interface definition
+#
+WEB
+    TEMPLATE /var/www/html/map/map.html
+    IMAGEPATH /var/www/html/map/images/
+    IMAGEURL /map/images/
+    LOG /var/www/html/map/maplog
+    METADATA
+        "wms_title"           "ERML demo server"
+        "wms_onlineresource"  "http://localhost"
+        "wms_srs"             "EPSG:4269 EPSG:4326"
+         WMS_ENABLE_REQUEST "*" 
+      END
+END
+
+PROJECTION
+    "init=epsg:4326"   ##required
+  END
+
+symbol
+  type ellipse
+  points 1 1 end
+  name "circle"
+end
+
+# https://mapserver.org/input/vector/sqlite.html
+LAYER 
+    NAME "MineView"
+    TYPE POINT
+    STATUS ON
+    CONNECTIONTYPE OGR
+    CONNECTION "erml.sqlite"
+    DATA "mine_view"
+    CLASS 
+            NAME "mines"
+            STYLE 
+               SYMBOL 'circle'
+                    SIZE 4
+                    COLOR 255 0 0
+                END # style
+            END # class    
+END # layer
+
+    
+END # map
+
