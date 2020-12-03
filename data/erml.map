@@ -63,6 +63,7 @@ LAYER
         "gml_include_items" "all" ## Optional (serves all attributes for layer)
         "gml_featureid"     "identifier" ## REQUIRED
         "wfs_enable_request" "*"
+    # the following maps field names to correct tag name (when the field name does not match exactly)
         "GML_start_date_ALIAS" "startDate"
         "GML_end_date_ALIAS" "endDate"
         "GML_observation_method_ALIAS" "observationMethod"
