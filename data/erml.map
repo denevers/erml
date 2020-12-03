@@ -37,6 +37,9 @@ WEB
       "wfs_srs"            "EPSG:4326 EPSG:4269 EPSG:3978 EPSG:3857" ## Recommended
       "wfs_abstract"       "ERML 2.0 lite compliant service" ## Recommended
       "wfs_enable_request" "*"  # necessary
+      "wfs_namespace_prefix" "erml"
+      "wfs_namespace_uri" "http://xmlns.earthresourceml.org/earthresourceml-lite/2.0"
+
 
       END
 END
@@ -60,6 +63,11 @@ LAYER
         "gml_include_items" "all" ## Optional (serves all attributes for layer)
         "gml_featureid"     "identifier" ## REQUIRED
         "wfs_enable_request" "*"
+        "GML_start_date_ALIAS" "startDate"
+        "GML_end_date_ALIAS" "endDate"
+        "GML_observation_method_ALIAS" "observationMethod"
+        "GML_positional_accuracy_ALIAS" "positionalAccuracy"
+        "GML_representative_commodity_uri_ALIAS" "representativeCommodity"
       END
     TYPE POINT
     STATUS ON
