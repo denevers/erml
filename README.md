@@ -14,6 +14,15 @@ Powershell
 `docker run -e MS_MAPFILE=/srv/data/erml.map --rm -d -p 80:80 --name ms -v \etc\erml\data:/srv/data pdok/mapserver`
 
 
+   * -e passes a environment variable to the container
+   * --rm remove the container when it's stopped
+   * -p maps internal and external ports
+   * --name name for the running container
+   * -v maps host path to a path inside the container.  therefore, /src/data inside the container actually maps to \etc\erml\data to my machine
+   * pdok/mapserver is the image that will be started
+
+   TODO: replace \etc\erml to a powershell variable.. `{$pwd}` causes error  
+
 ## examples
 
 (this will work when you have a local running instance)
