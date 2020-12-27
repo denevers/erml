@@ -6,14 +6,11 @@ Based on http://www.onegeology.org/service_provision/server_setup/geoserver.html
 
 ## build
 
-`docker build -t tgi/geoserver .`
 
-this will take a bit of time because it downloads geoserver from sourceforge
+using https://github.com/oscarfonts/docker-geoserver/
 
-docker run -i tgi/geoserver /bin/bash
+(docker pull oscarfonts/geoserver)
 
-## execution 
+`docker run -d -p 8080:8080 -v /etc/erml/data:/var/local/geoserver --name gs oscarfonts/geoserver`
 
-`docker run --rm -d -p 80:80 --name ms -v \etc\erml\data:/opt/geoserver/data_dir tgi/geoserver`
-
- /opt/geoserver/data_dir
+default password : admin/geoserver
