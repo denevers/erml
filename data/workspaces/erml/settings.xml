@@ -1,0 +1,28 @@
+<settings>
+  <id>SettingsInfoImpl-fcca97b:176ab43924d:-7ffb</id>
+  <workspace>
+    <id>WorkspaceInfoImpl--412d7c03:176a5ffabc1:-7fe4</id>
+    <name>erml</name>
+    <isolated>false</isolated>
+    <dateCreated>2020-12-27 21:53:14.175 UTC</dateCreated>
+    <dateModified>2020-12-28 21:40:24.493 UTC</dateModified>
+  </workspace>
+  <contact>
+    <id>contact</id>
+  </contact>
+  <charset>UTF-8</charset>
+  <numDecimals>4</numDecimals>
+  <verbose>true</verbose>
+  <verboseExceptions>false</verboseExceptions>
+  <metadata>
+    <map>
+      <entry>
+        <string>quietOnNotFound</string>
+        <boolean>false</boolean>
+      </entry>
+    </map>
+  </metadata>
+  <localWorkspaceIncludesPrefix>false</localWorkspaceIncludesPrefix>
+  <showCreatedTimeColumnsInAdminList>false</showCreatedTimeColumnsInAdminList>
+  <showModifiedTimeColumnsInAdminList>false</showModifiedTimeColumnsInAdminList>
+</settings>

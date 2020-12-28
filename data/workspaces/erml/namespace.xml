@@ -1,6 +1,6 @@
 <namespace>
   <id>NamespaceInfoImpl--412d7c03:176a5ffabc1:-7fe3</id>
   <prefix>erml</prefix>
-  <uri>http://nrcan.gc.ca/tgi/erml</uri>
+  <uri>http://xmlns.earthresourceml.org/earthresourceml-lite/2.0</uri>
   <isolated>false</isolated>
 </namespace>

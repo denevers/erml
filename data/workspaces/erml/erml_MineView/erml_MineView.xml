@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+	<namespaces>
+		<Namespace><prefix>gml</prefix><uri>http://www.opengis.net/gml/3.2</uri></Namespace>
+		<Namespace><prefix>xlink</prefix><uri>http://www.w3.org/1999/xlink</uri></Namespace>
+        <Namespace><prefix>xsi</prefix><uri>http://www.w3.org/2001/XMLSchema-instance</uri></Namespace>
+        <Namespace><prefix>erml</prefix><uri>http://xmlns.earthresourceml.org/earthresourceml-lite/2.0</uri></Namespace>
+	</namespaces>	
+  <sourceDataStores>
+		<DataStore>
+			<id>datastore</id>
+			<parameters>
+				<Parameter><name>dbtype</name><value>postgis</value></Parameter>
+				<Parameter><name>host</name><value>192.168.0.104</value></Parameter>
+				<Parameter><name>port</name><value>5432</value></Parameter>
+				<Parameter><name>database</name><value>wheeler</value></Parameter>
+				<Parameter><name>user</name><value>erml</value></Parameter>
+				<Parameter><name>passwd</name><value>?erml?</value></Parameter>
+				<Parameter><name>schema</name><value>erml</value></Parameter>
+				<Parameter><name>Expose primary keys</name><value>true</value></Parameter>
+			</parameters>
+		</DataStore>
+	</sourceDataStores>
+	<!--<catalog>../../../schemas/catalog.xml</catalog>-->
+	<targetTypes>
+	  <FeatureType><schemaUri>https://earthresourceml.org/schemas/earthresourceml-lite/2.0/erml-lite.xsd</schemaUri></FeatureType>
+	</targetTypes>
+	<typeMappings>
+		<FeatureTypeMapping>
+			<sourceDataStore>datastore</sourceDataStore>
+			<sourceType>mine_view</sourceType>
+			<targetElement>erml:MineView</targetElement>
+			<attributeMappings>
+                <!-- set the gml:id -->
+				<AttributeMapping>
+					<targetAttribute>erml:MineView</targetAttribute>
+					<idExpression><OCQL>pkuid</OCQL></idExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>gml:identifier</targetAttribute>
+                    <sourceExpression><OCQL>identifier</OCQL></sourceExpression>
+                    <!-- this adds the @codeSpace value -->
+					<ClientProperty>
+						<name>codeSpace</name>
+						<value>'http://nrcan.gc.ca/gsc/tgi'</value>
+					</ClientProperty>
+                </AttributeMapping>
+
+				<AttributeMapping>
+					<targetAttribute>erml:identifier</targetAttribute>
+                    <sourceExpression><OCQL>identifier</OCQL></sourceExpression>
+                </AttributeMapping>
+                
+				<AttributeMapping>
+					<targetAttribute>erml:name</targetAttribute>
+					<sourceExpression><OCQL>name</OCQL></sourceExpression>
+                </AttributeMapping>
+                
+				<AttributeMapping>
+					<targetAttribute>erml:status</targetAttribute>
+					<idExpression><OCQL>status</OCQL></idExpression>
+                </AttributeMapping>
+                
+				<AttributeMapping>
+					<targetAttribute>erml:commodity</targetAttribute>
+					<sourceExpression><OCQL>commodity</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:owner</targetAttribute>
+					<sourceExpression><OCQL>owner</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:startDate</targetAttribute>
+					<sourceExpression><OCQL>start_date</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:endDate</targetAttribute>
+					<sourceExpression><OCQL>end_date</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:status_uri</targetAttribute>
+					<sourceExpression><OCQL>status_uri</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:observationMethod</targetAttribute>
+					<sourceExpression><OCQL>observation_method</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:observationMethod</targetAttribute>
+					<sourceExpression><OCQL>observation_method</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:positionalAccuracy</targetAttribute>
+					<sourceExpression><OCQL>positional_accuracy</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:source</targetAttribute>
+					<sourceExpression><OCQL>source</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:statusUri</targetAttribute>
+					<sourceExpression><OCQL>status_uri</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:representativeCommodity_uri</targetAttribute>
+					<sourceExpression><OCQL>representative_commodity_uri</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:specification_uri</targetAttribute>
+					<sourceExpression><OCQL>specification_uri</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                <AttributeMapping>
+					<targetAttribute>erml:shape</targetAttribute>
+                <idExpression><OCQL>strConcat('mv.shape.', pkuid)</OCQL></idExpression>
+                <sourceExpression><OCQL>shape</OCQL></sourceExpression>
+                </AttributeMapping>
+
+                
+			</attributeMappings>
+		</FeatureTypeMapping>			
+	</typeMappings>
+</as:AppSchemaDataAccess>

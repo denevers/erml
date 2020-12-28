@@ -1,0 +1,16 @@
+<layer>
+  <name>mine_view</name>
+  <id>LayerInfoImpl--412d7c03:176a5ffabc1:-7fdf</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--412d7c03:176a5ffabc1:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>erml_MineView_featuretype</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2020-12-27 21:57:13.85 UTC</dateCreated>
+</layer>

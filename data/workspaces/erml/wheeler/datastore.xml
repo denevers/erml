@@ -15,7 +15,7 @@
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
     <entry key="database">wheeler</entry>
-    <entry key="host">192.168.0.110</entry>
+    <entry key="host">192.168.0.104</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="SSL mode">DISABLE</entry>
     <entry key="Estimated extends">true</entry>
@@ -27,10 +27,10 @@
     <entry key="create database">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
     <entry key="port">5432</entry>
-    <entry key="passwd">crypt1:34eMEBCKpOy3GqPbjV5JMQ==</entry>
+    <entry key="passwd">crypt1:toeWtsUuYqctPoafAsKz+A==</entry>
     <entry key="min connections">1</entry>
     <entry key="dbtype">postgis</entry>
-    <entry key="namespace">http://nrcan.gc.ca/tgi/erml</entry>
+    <entry key="namespace">http://xmlns.earthresourceml.org/earthresourceml-lite/2.0</entry>
     <entry key="max connections">10</entry>
     <entry key="Evictor tests per run">3</entry>
     <entry key="Test while idle">true</entry>
@@ -39,4 +39,5 @@
   </connectionParameters>
   <__default>false</__default>
   <dateCreated>2020-12-27 21:56:45.601 UTC</dateCreated>
+  <dateModified>2020-12-28 22:09:11.487 UTC</dateModified>
 </dataStore>
