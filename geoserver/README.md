@@ -1,6 +1,6 @@
 # GeoServer implementation
 
-I suggest using WSL level 2 on Windows, so we can run with a Ubuntu console...  (https://docs.microsoft.com/en-us/windows/wsl/install-win10), make sure it's level 2.  This simplifies greatly command example as we can stick to linux.
+I suggest using WSL level 2 on Windows, so we can interact with docker with a Ubuntu console...  (https://docs.microsoft.com/en-us/windows/wsl/install-win10), make sure it's level 2.  This simplifies greatly command example as we can stick to linux.
 
 I'm using oscarfonts docker image for geoserver (https://github.com/oscarfonts/docker-geoserver/)
 
