@@ -1,13 +1,15 @@
 <dataStore>
-    <id>erml_MineView_datastore</id>
-    <name>erml_MineView</name>
-    <enabled>true</enabled>
-    <workspace>
-        <id>WorkspaceInfoImpl--412d7c03:176a5ffabc1:-7fe4</id>
-    </workspace>
-    <connectionParameters>
-        <entry key="namespace">http://www.opengis.net/gsml/4.1/GeoSciML-Basic</entry>
-        <entry key="url">file:workspaces/erml/erml_MineView/erml_MineView.xml</entry>
-        <entry key="dbtype">app-schema</entry>
-    </connectionParameters>
+  <id>erml_MineView_datastore</id>
+  <name>erml_MineView</name>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl--412d7c03:176a5ffabc1:-7fe4</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="namespace">http://xmlns.earthresourceml.org/earthresourceml-lite/2.0</entry>
+    <entry key="dbtype">app-schema</entry>
+    <entry key="url">file:workspaces/erml/erml_MineView/erml_MineView.xml</entry>
+  </connectionParameters>
+  <__default>false</__default>
+  <dateModified>2020-12-28 22:15:01.659 UTC</dateModified>
 </dataStore>

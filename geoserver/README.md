@@ -80,4 +80,4 @@ to be transformed into ERML-lite instance (https://earthresourceml.org/earthreso
 </erl:MineView>
 ```
 
-test : http://localhost:8080/geoserver/erml/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=erml%3Amine_view&maxFeatures=50
+test : http://localhost:8080/geoserver/erml/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=erml%3AMineView&outputFormat=gml32&maxFeatures=50

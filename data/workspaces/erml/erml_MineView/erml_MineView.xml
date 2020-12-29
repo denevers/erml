@@ -110,7 +110,7 @@
                 </AttributeMapping>
 
                 <AttributeMapping>
-					<targetAttribute>erml:statusUri</targetAttribute>
+					<targetAttribute>erml:status_uri</targetAttribute>
 					<sourceExpression><OCQL>status_uri</OCQL></sourceExpression>
                 </AttributeMapping>
 
