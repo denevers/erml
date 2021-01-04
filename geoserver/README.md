@@ -12,7 +12,7 @@ that's it, you know have geoserver.
 
 to launch GeoServer (we assume you are at the root of this repo), run this
 
-`docker run -d -p 8080:8080 -v /mnt/c/etc/erml/data:/var/local/geoserver -v /mnt/c/etc/erml/ext:/var/local/geoserver-exts/ --name gs oscarfonts/geoserver`
+`docker run -d -p 8080:8080 -v $(pwd)/data:/var/local/geoserver -v $(pwd)/ext:/var/local/geoserver-exts/ --name gs oscarfonts/geoserver`
 
 BUT FIRST.. we you'll need to have a postgis database with mine_view table.  (I tried to use geopackage so we could skip the database installation part but could not make it work - I did not try hard)
 
