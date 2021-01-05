@@ -247,3 +247,41 @@ output (null values won't produce tags)
 </wfs:FeatureCollection>
 ```
 
+== Troubleshooting
+
+`docker logs <name-of-container>` is very useful to see if you get any errors from geoserver
+
+
+=== Database configuration issues 
+
+you might have an xml exception from OGC web services.  
+
+```xml
+<ows:ExceptionReport xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ows="http://www.opengis.net/ows" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" xsi:schemaLocation="http://www.opengis.net/ows http://localhost:8080/geoserver/schemas/ows/1.0.0/owsExceptionReport.xsd">
+<ows:Exception exceptionCode="NoApplicableCode">
+<ows:ExceptionText>Error occurred getting features java.lang.RuntimeException: Unable to obtain connection: Cannot create PoolableConnectionFactory (FATAL: no pg_hba.conf entry for host "x.x.x.x", (blah blah blah)</ows:ExceptionText>
+</ows:Exception>
+</ows:ExceptionReport>
+```
+
+this means your postgres instance does not accept the connection from the container (so GeoServer running in the container).  
+You'll need to edit `pg_hba.conf` postgres config file to let it in.
+
+Postgres documentation : https://www.postgresql.org/docs/9.6/auth-pg-hba-conf.html
+
+Up to you how strict you want to be
+
+`host    all             all             0.0.0.0/0            md5`
+
+will let everyone in (probably ok on your own laptop just for development purpose).
+
+`host    all             all             192.168.0.0/16            md5`
+
+will just let stuff running from your machine when running from home (local ISP)
+
+or you can check the specific IP (in the error message), but remember it can change from one running instance to the other.
+
+if you are running on a workplace network - better ask your admin
+
+
+
