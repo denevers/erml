@@ -68,7 +68,7 @@ The fragment to connect to your own postgres database is (this is where you will
 			<id>datastore</id>
 			<parameters>
 				<Parameter><name>dbtype</name><value>postgis</value></Parameter>
-				<Parameter><name>host</name><value>192.168.0.110</value></Parameter>
+				<Parameter><name>host</name><value>192.168.0.XXX</value></Parameter> <!-- if working at home, will like look like this -->
 				<Parameter><name>port</name><value>5432</value></Parameter>
 				<Parameter><name>database</name><value>wheeler</value></Parameter>
 				<Parameter><name>user</name><value>erml</value></Parameter>
@@ -283,5 +283,74 @@ or you can check the specific IP (in the error message), but remember it can cha
 
 if you are running on a workplace network - better ask your admin
 
+
+
+## Adding extension
+
+This thread (granted, it dates from 2015) seems to suggest that GeoServer does not handle adding new fields in "any", unless it's specified in a schema
+
+https://sourceforge.net/p/geoserver/mailman/geoserver-users/thread/B2FAE4AD1B01284C96DD7D8FBA5C3434C02ED39E%40ExMBX01-CDC.nexus.csiro.au/#msg34412871
+
+(CTRL-F to `I'm afraid you're right`)
+
+So this leaves us to two (similar) options, but having different consequences.  
+
+### By Extension
+
+By extension, means that you create a NEW type - It can have the same name, but must have a different namespace (eg: `tgi:MineView` instead of `erml:MineView`).  This is the "by the book" way to extend classes and add new property.  But honestly, it's probably not the intent originally, because you don't need a "any" section to do this.  My ready of "any" trick to to allow people to add properties in the *same* feature type.
+
+(won't be documenting unless we decide this is how we go)
+
+### By copy and edit schema
+
+This approach means you have to doctor the original schema, and therefore make a local copy.  In my example, I create a copy directly in git repo and I will point to it (as a temporary solution - a better location might be considered in a production environment)
+
+I copied ERML schema (and renamed it) here
+
+https://raw.githubusercontent.com/denevers/erml/main/schemas/erml-lite-tgi.xsd
+
+and added a field just after shape
+
+```xml
+	<!-- TGI extensions -->
+		<element minOccurs="0" name="tgi_extension" type="string">
+			<annotation>
+				<documentation>Test property added for TGI</documentation>
+			</annotation>
+		</element>
+```
+
+this adds a new `erml:tgi_extension` field to MineView class
+
+Went back to erml_MineView.xml and changed the schema location
+
+```xml
+<targetTypes>
+	  <FeatureType><schemaUri>https://raw.githubusercontent.com/denevers/erml/main/schemas/erml-lite-tgi.xsd</schemaUri></FeatureType>
+	</targetTypes>
+```
+
+and added a new property (matching to an already used column, but you get the idea)
+
+```xml
+  <AttributeMapping>
+	<targetAttribute>erml:tgi_extention</targetAttribute>
+	<sourceExpression><OCQL>source</OCQL></sourceExpression>
+</AttributeMapping>
+```
+
+
+now it works
+
+http://localhost:8080/geoserver/erml/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=erml%3AMineView&outputFormat=gml32&maxFeatures=5
+
+```xml
+  <erml:shape>
+     <gml:Point gml:id="mv.shape.175" srsDimension="2" srsName="urn:ogc:def:crs:EPSG::4326">
+        <gml:pos>49.845 -55.7753</gml:pos>
+            </gml:Point>
+        </erml:shape>
+    <erml:tgi_extension>mms</erml:tgi_extension>
+```
 
 

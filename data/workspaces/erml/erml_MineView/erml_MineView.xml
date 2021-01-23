@@ -6,14 +6,15 @@
 		<Namespace><prefix>gml</prefix><uri>http://www.opengis.net/gml/3.2</uri></Namespace>
 		<Namespace><prefix>xlink</prefix><uri>http://www.w3.org/1999/xlink</uri></Namespace>
         <Namespace><prefix>xsi</prefix><uri>http://www.w3.org/2001/XMLSchema-instance</uri></Namespace>
-        <Namespace><prefix>erml</prefix><uri>http://xmlns.earthresourceml.org/earthresourceml-lite/2.0</uri></Namespace>
+		<Namespace><prefix>erml</prefix><uri>http://xmlns.earthresourceml.org/earthresourceml-lite/2.0</uri></Namespace>
+		<Namespace><prefix>tgi</prefix><uri>http://nrcan.tgi.ca/tgi</uri></Namespace>
 	</namespaces>	
   <sourceDataStores>
 		<DataStore>
 			<id>datastore</id>
 			<parameters>
 				<Parameter><name>dbtype</name><value>postgis</value></Parameter>
-				<Parameter><name>host</name><value>192.168.0.104</value></Parameter>
+				<Parameter><name>host</name><value>192.168.0.110</value></Parameter>
 				<Parameter><name>port</name><value>5432</value></Parameter>
 				<Parameter><name>database</name><value>wheeler</value></Parameter>
 				<Parameter><name>user</name><value>erml</value></Parameter>
@@ -25,7 +26,7 @@
 	</sourceDataStores>
 	<!--<catalog>../../../schemas/catalog.xml</catalog>-->
 	<targetTypes>
-	  <FeatureType><schemaUri>https://earthresourceml.org/schemas/earthresourceml-lite/2.0/erml-lite.xsd</schemaUri></FeatureType>
+	  <FeatureType><schemaUri>https://raw.githubusercontent.com/denevers/erml/main/schemas/erml-lite-tgi.xsd</schemaUri></FeatureType>
 	</targetTypes>
 	<typeMappings>
 		<FeatureTypeMapping>
@@ -128,6 +129,12 @@
 					<targetAttribute>erml:shape</targetAttribute>
                 <idExpression><OCQL>strConcat('mv.shape.', pkuid)</OCQL></idExpression>
                 <sourceExpression><OCQL>shape</OCQL></sourceExpression>
+				</AttributeMapping>
+				
+				
+                <AttributeMapping>
+					<targetAttribute>erml:tgi_extension</targetAttribute>
+					<sourceExpression><OCQL>source</OCQL></sourceExpression>
                 </AttributeMapping>
 
                 
